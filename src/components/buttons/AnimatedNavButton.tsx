@@ -15,6 +15,7 @@ export default function AnimatedNavButton({
       toValue: 6,
       useNativeDriver: true,
       bounciness: 6,
+      // speed:20
     }).start()
   }
 
@@ -23,6 +24,7 @@ export default function AnimatedNavButton({
       toValue: 0,
       useNativeDriver: true,
       bounciness: 6,
+      // speed:20
     }).start()
   }
 

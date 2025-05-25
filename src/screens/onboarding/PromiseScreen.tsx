@@ -1,6 +1,7 @@
 import { Pressable, Text, View } from "react-native"
 import ScreenLayout from "../../components/layouts/ScreenLayout"
 import AnimatedNavButton from "../../components/buttons/AnimatedNavButton"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const features = [
   "📊 Track your goals and habits easily",
@@ -10,7 +11,8 @@ const features = [
 ]
 
 export default function PromiseScreen({ navigation }: any) {
-  const handleNext = () => {
+  const handleNext = async() => {
+    await AsyncStorage.setItem("onBoardingDone","true")
     navigation.navigate("SignUp")
   }
 

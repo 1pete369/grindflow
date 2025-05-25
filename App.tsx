@@ -1,16 +1,23 @@
 import { NavigationContainer } from "@react-navigation/native"
-import RootNavigator from "./src/navigation/RootNavigator"
-import "./global.css"
 import { SafeAreaProvider } from "react-native-safe-area-context"
-import { configureGoogle } from "./src/lib/google"
+import "./global.css"
+import RootNavigator from "./src/navigation/RootNavigator"
+import { UserProvider } from "./src/contexts/UserContext"
+import Toast from "react-native-toast-message"
 
 export default function App() {
-  configureGoogle()
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <>
+      <UserProvider>
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </UserProvider>
+
+      {/* 👇 Must be outside of providers to render above everything */}
+      <Toast />
+    </>
   )
 }
